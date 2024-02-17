@@ -1,4 +1,4 @@
-output "public_ip" {
+output "bastion_host_public_ip" {
   value = module.bastion.public_ip
   description = "public ip of bastion host"
 }
