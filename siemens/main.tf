@@ -39,7 +39,7 @@ module "asg" {
   private_subnet_az1_id = module.vpc.private_subnet_az1_id
   private_subnet_az2_id = module.vpc.private_subnet_az2_id
   alb_tg_arn = module.alb.alb_tg_arn
-  # key_name = "${path.module}./ec2_key.pub"
+  iam-instance-profile = module.assume_role.instance_profile
 }
 
 module "bastion" {
@@ -62,6 +62,7 @@ module "alarm" {
   auto_scaling_down_policy_arn = module.asg.auto_scaling_down_policy_arn
   auto_scaling_group_name =  module.asg.auto_scaling_group_name
   auto_scaling_up_policy_arn = module.asg.auto_scaling_up_policy_arn
+  sns_topic = module.sns.sns_topic_arn
 }
 
 module "natgw" {
@@ -72,4 +73,12 @@ module "natgw" {
   vpc_id = module.vpc.vpc_id
   private_subnet_az1_id = module.vpc.private_subnet_az1_id
   private_subnet_az2_id = module.vpc.private_subnet_az2_id
+}
+
+module "assume_role" {
+  source = "../modules/iam-role"
+}
+
+module "sns" {
+  source = "../modules/SNS"
 }

@@ -13,6 +13,7 @@ sudo add-apt-repository --yes --update ppa:ansible/ansible -y
 sudo apt install ansible -y
 git clone https://github.com/kumard0303/ansible_repo.git /home/siemens/ansible_repo
 sudo ansible-playbook -i inventory_file /home/siemens/ansible_repo/nginx/nginx_setup.yml
+sudo ansible-playbook -i inventory_file /home/siemens/ansible_repo/cloudwatch/cloudwatch.yml
 sudo openssl req -x509 -newkey rsa:4096 -sha256 -days 3650   -nodes -keyout example.com.key -out example.com.crt -subj "/CN=example.com"   -addext "subjectAltName=DNS:example.com,DNS:*.example.com,IP:$(hostname -i)"
 sudo mv example.com.key example.com.crt /etc/ssl/
 sudo mv /home/siemens/ansible_repo/html/index.html /var/www/html/index.html

@@ -8,6 +8,7 @@ resource "aws_launch_configuration" "asg_launchconfig" {
     security_groups = [var.instance_sg_id]
 
     user_data = "${file("${path.module}/startup.sh")}"
+    iam_instance_profile = var.iam-instance-profile
 
     ebs_block_device {
       device_name = "/dev/xvdf"
