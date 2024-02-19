@@ -47,3 +47,8 @@ variable "private_subnet_az2_cidr" {
   description = "Name of the project"
   type = string
 }
+
+variable "sns_endpoint" {
+  description = "endpoint for notification"
+  type = string
+}

@@ -81,4 +81,5 @@ module "assume_role" {
 
 module "sns" {
   source = "../modules/SNS"
+  endpoint = var.sns_endpoint
 }
